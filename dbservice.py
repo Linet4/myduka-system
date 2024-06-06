@@ -98,17 +98,17 @@ get_data("products")
 # write a query that gets sales per product sales=selling_price(products)*quantity(sales)
 
 # create a function give it a name sales_product
-# def sales_product():
-#     query = "SELECT p.name, SUM(p.selling_price * s.quantity) AS totalsales FROM sales as s JOIN products as p ON s.productid = p.productid GROUP BY p.name;"
-#     curr.execute(query)
-#     data=curr.fetchall()
-#     print(data)
-# sales_product()
+def sales_product():
+    query = "select products.productid, products.name, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.productid, products.name;"
+    curr.execute(query)
+    data=curr.fetchall()
+    print(data)
+sales_product()
 
 # write a query to get profit per product profit=(selling_price-buying_price)*quantuty
 
 def profit():
-    query = "SELECT p.name, SUM((p.selling_price - p.buying_price) * s.quantity) AS profit FROM sales as s JOIN products as p ON s.productid = p.productid GROUP BY p.name;"
+    query ="select products.name, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.name;"
     curr.execute(query)
     data=curr.fetchall()
     print(data)
@@ -117,6 +117,22 @@ profit()
 
 # Task
 # write a query that gets sales per day sales= selling_price(products) * quantity(sales) 
+
+def sales_day():
+    query = "select sales.created_at, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales.created_at;"
+    curr.execute(query)
+    data=curr.fetchall()
+    print(data)
+sales_day()    
+
 # write a query to get profit per day profit=(selling_price-buying_price)*quantity
 # hint Date fuction
 # psql = dbservice
+
+def profit_day():
+    query = "select sales.created_at, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales.created_at;"
+    curr.execute(query)
+    data=curr.fetchall()
+    print(data)
+profit_day() 
+   
