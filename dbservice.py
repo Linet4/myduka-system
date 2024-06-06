@@ -98,41 +98,45 @@ get_data("products")
 # write a query that gets sales per product sales=selling_price(products)*quantity(sales)
 
 # create a function give it a name sales_product
-def sales_product():
-    query = "select products.productid, products.name, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.productid, products.name;"
-    curr.execute(query)
-    data=curr.fetchall()
-    print(data)
-sales_product()
+# def sales_product():
+#     query = "select products.productid, products.name, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.productid, products.name;"
+#     curr.execute(query)
+#     data=curr.fetchall()
+#     print(data)
+# sales_product()
 
 # write a query to get profit per product profit=(selling_price-buying_price)*quantuty
 
-def profit():
-    query ="select products.name, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.name;"
-    curr.execute(query)
-    data=curr.fetchall()
-    print(data)
+# def profit():
+#     query ="select products.name, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.name;"
+#     curr.execute(query)
+#     data=curr.fetchall()
+#     print(data)
    
-profit()
+# profit()
 
 # Task
 # write a query that gets sales per day sales= selling_price(products) * quantity(sales) 
 
-def sales_day():
-    query = "select sales.created_at, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales.created_at;"
-    curr.execute(query)
-    data=curr.fetchall()
-    print(data)
-sales_day()    
+# def sales_day():
+#     query = "select DATE(sales.created_at) as sales_day, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales_day;"
+#     curr.execute(query)
+#     data=curr.fetchall()
+#     print(data)
+# sales_day()    
 
 # write a query to get profit per day profit=(selling_price-buying_price)*quantity
 # hint Date fuction
 # psql = dbservice
 
-def profit_day():
-    query = "select sales.created_at, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales.created_at;"
+def profit_daily():
+    query = "select DATE(sales.created_at) as profit_day,\
+    sum((products.selling_price - products.buying_price)*sales.quantity)\
+    As profit from sales JOIN products on sales.productid = products.productid\
+    GROUP BY profit_day order by profit_day;"
     curr.execute(query)
     data=curr.fetchall()
-    print(data)
-profit_day() 
+    for i in data:
+     print(i)
+profit_daily() 
    
