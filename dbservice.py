@@ -16,21 +16,21 @@ curr=conn.cursor()
 
 # fetch products
 
-# def get_products():
-#     query="select * from products"
-#     curr.execute(query)
-#     products=curr.fetchall()
-#     print(products)
+def get_products():
+    query="select * from products"
+    curr.execute(query)
+    products=curr.fetchall()
+    return products
 
 # get_products()
 
 # fetch sales
 
-# def get_sales():
-#     query="select * from sales"
-#     curr.execute(query)
-#     sales=curr.fetchall()
-#     print(sales)
+def get_sales():
+    query="select * from sales"
+    curr.execute(query)
+    sales=curr.fetchall()
+    return sales
 
 # get_sales() 
 
@@ -47,17 +47,18 @@ def get_data(table_name):
     query = f"select * from {table_name}" 
     curr.execute(query)
     data=curr.fetchall()
-    print(data)
-get_data('products') 
-get_data('sales')  
+    return data
+
+# get_data('products') 
+# get_data('sales')  
 
 # insert data
 # insert products
-# def insert_products():
-#     query="insert into products(name, buying_price,\
-#           selling_price, stock_quantity) values ('ginger', 100, 150, 10)"
-#     curr.execute(query)
-#     conn.commit()
+def insert_products():
+    query="insert into products(name, buying_price,\
+          selling_price, stock_quantity) values ('ginger', 100, 150, 10)"
+    curr.execute(query)
+    conn.commit()
 
 # # insert_products()
 # get_data("products")
@@ -69,7 +70,7 @@ def insert_sales():
     conn.commit()
 
 # insert_sales()    
-get_data("sales")  
+# get_data("sales")  
 
 # create a function to insert products values as parameter (placeholder)
 # when calling the func you will pass values as arguments
@@ -81,15 +82,15 @@ def insert_products(values):
 
 x=("bread",65,80,4)
 # insert_products(x)
-get_data("products")    
+# get_data("products")    
 
 # create a function to insert sales values as parameter (placeholder)
 # when calling the func you will pass values as arguments
 
-# def insert_sales(values):
-#     query="insert into sales(productid, quantity, created_at)values(%s,%s,now())"
-#     curr.execute(query,values)
-#     conn.commit()
+def insert_sales(values):
+    query="insert into sales(productid, quantity, created_at)values(%s,%s,now())"
+    curr.execute(query,values)
+    conn.commit()
 
 # x=(22,30)
 # # insert_sales(x)
@@ -98,31 +99,31 @@ get_data("products")
 # write a query that gets sales per product sales=selling_price(products)*quantity(sales)
 
 # create a function give it a name sales_product
-# def sales_product():
-#     query = "select products.productid, products.name, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.productid, products.name;"
-#     curr.execute(query)
-#     data=curr.fetchall()
-#     print(data)
+def sales_product():
+    query = "select products.productid, products.name, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.productid, products.name;"
+    curr.execute(query)
+    data=curr.fetchall()
+    return data
 # sales_product()
 
 # write a query to get profit per product profit=(selling_price-buying_price)*quantuty
 
-# def profit():
-#     query ="select products.name, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.name;"
-#     curr.execute(query)
-#     data=curr.fetchall()
-#     print(data)
+def profit():
+    query ="select products.name, sum(products.selling_price - products.buying_price) As profit from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY products.name;"
+    curr.execute(query)
+    data=curr.fetchall()
+    return data
    
 # profit()
 
 # Task
 # write a query that gets sales per day sales= selling_price(products) * quantity(sales) 
 
-# def sales_day():
-#     query = "select DATE(sales.created_at) as sales_day, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales_day;"
-#     curr.execute(query)
-#     data=curr.fetchall()
-#     print(data)
+def sales_day():
+    query = "select DATE(sales.created_at) as sales_day, sum(products.selling_price * sales.quantity) As total_sales from(sales INNER JOIN products on sales.productid = products.productid) GROUP BY sales_day;"
+    curr.execute(query)
+    data=curr.fetchall()
+    return data
 # sales_day()    
 
 # write a query to get profit per day profit=(selling_price-buying_price)*quantity
@@ -137,6 +138,6 @@ def profit_daily():
     curr.execute(query)
     data=curr.fetchall()
     for i in data:
-     print(i)
-profit_daily() 
+     return i
+# profit_daily() 
    
