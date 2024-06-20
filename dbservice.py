@@ -137,7 +137,8 @@ def profit_daily():
     GROUP BY profit_day order by profit_day;"
     curr.execute(query)
     data=curr.fetchall()
-    for i in data:
-     return i
+    return data
 # profit_daily() 
-   
+
+
+  
