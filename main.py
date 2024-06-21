@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
-from dbservice import get_data,insert_products,insert_sales,sales_product,profit,sales_day,profit_daily
+from dbservice import get_data,insert_products,insert_sales,sales_product,profit,sales_day,profit_daily,total_sales
+
 
 
 
@@ -27,7 +28,7 @@ def sales():
 @app.route("/dashboard")
 def dashboard():
     s_product=sales_product()
-    print(s_product)
+    # print(s_product)
     p_name=[]
     s_p=[]
     for i in s_product:
@@ -52,11 +53,19 @@ def dashboard():
     # print(p_day)
     p_dy=[]
     for i in p_day:
-      p_dy.append(float(i[1]))   
+      p_dy.append(float(i[1]))  
+
+    # total sales
+    t_sales=total_sales()
+    # print(t_sales)
+    for i in t_sales:
+        sales_t=i[0]
+         
+    # print(sales_t)
     
         
         
-    return render_template("dashboard.html",p_name=p_name,s_p=s_p,pr=pr,s_d=s_d,date=date,p_dy=p_dy)
+    return render_template("dashboard.html",p_name=p_name,s_p=s_p,pr=pr,s_d=s_d,date=date,p_dy=p_dy,sales_t=sales_t)
 
 @app.route("/add_products",methods=["POST","GET"])
 def add_products():
