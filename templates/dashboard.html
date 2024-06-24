@@ -23,44 +23,47 @@
       background-color: #fff;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
       width: 100%;
-      padding:0 30px;
+      padding: 0 30px;
       display: grid;
       grid-template-columns: 2fr 10fr 0.4fr 1fr;
       align-items: center;
-      z-index: 1 ;
+      z-index: 1;
 
 
     }
-    .logo h2{
-      color:#0ede7a;
+
+    .logo h2 {
+      color: #0ede7a;
 
     }
-    .search{
+
+    .search {
       position: relative;
       width: 60%;
       justify-self: center;
-      top:5px
-
+      top: 5px
     }
-    .search input{
+
+    .search input {
       width: 100%;
-      height:40px;
-      padding:0 40px;
+      height: 40px;
+      padding: 0 40px;
       font-size: 16px;
-      outline:none;
-      border:none;
+      outline: none;
+      border: none;
       border-radius: 10px;
       background: #f5f5f5;
-      top:5px;
+      top: 5px;
 
     }
-    .search i{
-      position:absolute;
+
+    .search i {
+      position: absolute;
       right: 15px;
-      top:15px;
+      top: 15px;
       cursor: pointer;
 
-      
+
     }
 
     .user {
@@ -76,67 +79,77 @@
       width: 100%;
       object-fit: cover;
     }
+
     /* sidebar starts here */
-    .sidebar{
-      position:fixed;
-      top:60px;
-      width:260px;
+    .sidebar {
+      position: fixed;
+      top: 60px;
+      width: 260px;
       height: 600px;
       background: #0ede7a;
       overflow-x: hidden;
     }
+
     .sidebar ul {
-      margin-top:20px;
+      margin-top: 20px;
 
     }
-    .sidebar ul li{
-      width:100%;
+
+    .sidebar ul li {
+      width: 100%;
       list-style: none;
     }
-    .sidebar ul li:hover{
+
+    .sidebar ul li:hover {
       background: #fff;
 
     }
-    .sidebar ul li:hover a{
+
+    .sidebar ul li:hover a {
       color: #0ede7a;
     }
-    .sidebar ul li a{
-      width:100%;
+
+    .sidebar ul li a {
+      width: 100%;
       text-decoration: none;
       color: #fff;
-      display:flex;
+      display: flex;
       align-items: center;
       height: 60px;
     }
-    .sidebar ul li a i{
+
+    .sidebar ul li a i {
       min-width: 60px;
-      font-size:24px;
+      font-size: 24px;
       text-align: center;
 
     }
+
     /* main starts here */
-    .main{
+    .main {
       position: absolute;
       top: 60px;
       width: calc(100%-60px);
-      left:260px;
+      left: 260px;
       min-height: calc(100%-60px);
       background: #f5f5f5;
       right: 0;
-      
-      
+
+
 
     }
-    .cards{
+
+    .cards {
       width: 100%;
-      padding:35px 20px;
-      display:grid;
-      grid-template-columns: repeat(4,1fr);
+      padding: 35px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       grid-gap: 20px;
     }
+
     .cards .card {
-      padding:20px;
-      display:flex;
+      padding: 20px;
+      display: flex;
       align-items: center;
       background: #fff;
       border-radius: 9px;
@@ -144,114 +157,150 @@
       box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
 
     }
+
     .cards .card:hover {
       background: #0ede7a;
     }
-    .cards .card:hover .name{
-      color: #fff;
-    }
-    .cards .card:hover .number{
-      color: #fff;
-    }
-    .cards .card:hover .icon-box{
+
+    .cards .card:hover .name {
       color: #fff;
     }
 
-    .number{
-      font-size: 30px;
+    .cards .card:hover .number {
+      color: #fff;
+    }
+
+    .cards .card:hover .icon-box {
+      color: #fff;
+    }
+
+    .number {
+      font-size: 20px;
       font-weight: 100;
       color: #0ede7a;
 
+
     }
-    .name{
-      color:#888;
-      font-weight:500;
+
+    .name {
+      color: #888;
+      font-weight: 500;
       font-size: 20px;
     }
-    .icon-box{
-      font-size:40px;
+
+    .icon-box {
+      font-size: 40px;
       color: #0ede7a;
 
     }
+
     /* charts starts here */
-    .charts{
-      display:grid;
+    .charts {
+      display: grid;
       grid-template-columns: 2fr 2fr;
       grid-gap: 20px;
-      width:100%;
-      padding:10px;
+      width: 100%;
+      padding: 10px;
       padding-top: 0;
-      
+
     }
-    .chart{
+
+    .chart {
       background: #fff;
       /* padding: 20px; */
       border-radius: 10px;
-      box-shadow:0 7px 25px 0 rgba(0, 0, 0, 0.08) ;
-      min-height:300px;
-      
+      box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+      min-height: 300px;
+
     }
-    .chart h2{
+
+    .chart h2 {
       margin-bottom: 6px;
       font-size: 20px;
       color: #666;
       text-align: center;
     }
+
+    .card_two {
+      height: 400px;
+      width: 100%;
+      padding: 35px 20px;
+      grid-template-columns: 1fr;
+
+    }
+
+    .card_two .recent {
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      display: flex;
+      background: #fff;
+      border-radius: 9px;
+      box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+      min-height: 400px;
+
+
+    }
+
     /* Responsive starts here */
-    @media(max-width:1115px){
-      .sidebar{
-        width:60px;
+    @media(max-width:1115px) {
+      .sidebar {
+        width: 60px;
       }
-      .main{
+
+      .main {
         left: 60px;
-        width:calc(100%-60px);
+        width: calc(100%-60px);
       }
     }
-    @media(max-width:1000px){
-      .cards{
+
+    @media(max-width:1000px) {
+      .cards {
         grid-template-columns: repeat(2 1fr);
       }
-      .charts{
+
+      .charts {
         grid-template-columns: 1fr;
-        padding:25px;
+        padding: 25px;
       }
     }
-    @media(max-width:500px){
-      .topbar{
+
+    @media(max-width:500px) {
+      .topbar {
         grid-template-columns: 1fr 5fr 0.3fr 1fr;
       }
-      .cards{
+
+      .cards {
         grid-template-columns: 1fr;
       }
-      .logo h2{
+
+      .logo h2 {
         font-size: 20px;
       }
-      .search{
-        width:80%;
+
+      .search {
+        width: 80%;
       }
-      .search input{
+
+      .search input {
         padding: 0 20px;
       }
-      .fa-bell{
+
+      .fa-bell {
         margin-right: 5px;
       }
-      .user{
-        width:40px;
+
+      .user {
+        width: 40px;
         height: 40px;
       }
     }
-
-
-
-
-
-
-
   </style>
 </head>
 
 <body>
-  
+
   <div class="container">
     <div class="topbar">
       <div class="logo">
@@ -265,7 +314,7 @@
 
       </div>
       <i class="fa-solid fa-bell">messages</i>
-      
+
 
       <div class="user">
         <img src="/static/user.jpeg" alt="">
@@ -273,9 +322,9 @@
       </div>
 
     </div>
-    
+
   </div>
-  
+
   <div class="sidebar">
     <ul>
       <li>
@@ -302,7 +351,7 @@
           <div>Sales</div>
         </a>
       </li>
-      
+
       <li>
         <a href="#">
           <i class="fas fa-cog"></i>
@@ -317,7 +366,7 @@
       <div class="card">
         <div class="card-content">
           <div class="name">Today Sales</div>
-          <div class="number">$123</div>
+          <div class="number">{{Todaysales}}</div>
 
         </div>
         <div class="icon-box">
@@ -340,8 +389,8 @@
       </div>
       <div class="card">
         <div class="card-contant">
-          <div class="name">Today Revenue</div>
-          <div class="number">$1234</div>
+          <div class="name">Today Profit</div>
+          <div class="number">${{todayprofit}}</div>
 
         </div>
         <div class="icon-box">
@@ -352,8 +401,8 @@
       </div>
       <div class="card">
         <div class="card-contant">
-          <div class="name">Total Revenue</div>
-          <div class="number">$1234</div>
+          <div class="name">Total Profit</div>
+          <div class="number">${{Totalprofit}}</div>
 
         </div>
         <div class="icon-box">
@@ -362,6 +411,7 @@
 
 
       </div>
+
 
     </div>
     <div class="charts">
@@ -374,8 +424,61 @@
         <canvas id="line-chart" width="" height=""></canvas>
       </div>
     </div>
+    <div class="card_two">
+      <div class="recent">
+        <div class="card-contant">
+          <h4>Resent Sales</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Salesid</th>
+                <th scope="col">productid</th>
+                <th scope="col">quantity</th>
+                <th scope="col">created_at</th>
+                
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for i in r_sales%}
+              <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+                <td>
+                  <!-- Example single danger button -->
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-green dropdown-toggle" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      Details
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Reverse</a></li>
+                      <li><a class="dropdown-item" href="#">Mark Processes</a></li>
+                      <li><a class="dropdown-item" href="#">Delete</a></li>
+
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              {%endfor%}
+
+              
+
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+    </div>
+
 
   </div>
+
+
 
 
 
@@ -438,7 +541,7 @@
       label: "profit per Day",
       borderColor: "#3e95cd",
       fill: false
-      }, 
+      },
     ]
   },
       options: {

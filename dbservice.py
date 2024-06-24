@@ -152,7 +152,7 @@ def total_sales():
 
 # 2write a query to display todays sales
 def today_sales():
-    query= " select DATE(sales.created_at) as sales_day,sum(products.selling_price * sales.quantity) As total_sales from(sales JOIN products on sales.productid = products.productid) GROUP BY sales_day ORDER BY sales_day LIMIT 1 DESC;"
+    query= " select DATE(sales.created_at) as sales_day,sum(products.selling_price * sales.quantity) As total_sales from(sales JOIN products on sales.productid = products.productid) GROUP BY sales_day ORDER BY sales_day  DESC LIMIT 1;"
     curr.execute(query)
     data=curr.fetchall()
     return data
@@ -164,8 +164,8 @@ def total_profit():
     As total_profit from sales JOIN products on sales.productid = products.productid;"
     curr.execute(query)
     data=curr.fetchall()
-    print(data)
-total_profit() 
+    return data
+# total_profit() 
 # =>create a function on dbservice.py 
 # 4.write the query to display todays profit
 
@@ -176,10 +176,17 @@ def today_profit():
     GROUP BY today_profit order by today_profit DESC LIMIT 1;"
     curr.execute(query)
     data=curr.fetchall()
-    print(data)
-today_profit() 
+    return data
+# today_profit() 
 
 # =>create a function on dbservice.py
+
+def recent_sales():
+    query="select * from sales order by created_at desc limit 10;"
+    curr.execute(query)
+    data=curr.fetchall()
+    return data
+# recent_sales()    
 
 
   
