@@ -188,5 +188,9 @@ def recent_sales():
     return data
 # recent_sales()    
 
+def insert_user(values):
+    query="insert into users(full_name, email, password) values(%s, %s, %s)"
+    curr.execute(query,values)
+    conn.commit()
 
   

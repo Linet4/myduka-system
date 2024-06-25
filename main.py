@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from dbservice import get_data,insert_products,insert_sales,sales_product,profit,sales_day,profit_daily,total_sales,today_sales,\
-total_profit,today_profit,recent_sales
+total_profit,today_profit,recent_sales,insert_user
 
 
 
@@ -90,7 +90,24 @@ def dashboard():
     return render_template("dashboard.html",p_name=p_name,s_p=s_p,pr=pr,
                            s_d=s_d,date=date,p_dy=p_dy,sales_t=sales_t,Todaysales=Todaysales,Totalprofit=Totalprofit,todayprofit=todayprofit,r_sales=r_sales)
                            
-                        
+@app.route("/login",methods=["POST","GET"])
+def login():
+    
+    return render_template("login.html")
+@app.route("/register",methods=["POST","GET"])
+def register():
+    # get form data
+    if request.method == "POST":
+        f_name=request.form['full_name']
+        r_email=request.form['email']
+        r_password=request.form['password']
+        new_user=(f_name,r_email,r_password)
+        insert_user(new_user)  
+        return redirect(url_for('login'))      
+
+    
+    return render_template("register.html",)
+                    
 
 @app.route("/add_products",methods=["POST","GET"])
 def add_products():
