@@ -300,6 +300,17 @@
 </head>
 
 <body>
+  <div class="flash">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
 
   <div class="container">
     <div class="topbar">
@@ -349,6 +360,18 @@
         <a href="/sales">
           <i class="fas fa-hand-holding-usd"></i>
           <div>Sales</div>
+        </a>
+      </li>
+      <li>
+        <a href="/login">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <div>Login</div>
+        </a>
+      </li>
+      <li>
+        <a href="/register">
+          <i class="fa-solid fa-registered"></i>
+          <div>Register</div>
         </a>
       </li>
 
