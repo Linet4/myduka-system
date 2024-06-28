@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request,flash
+from flask import Flask, render_template, redirect, url_for, request, flash,session
 from dbservice import get_data,insert_products,insert_sales,sales_product,profit,sales_day,profit_daily,total_sales,today_sales,\
 total_profit,today_profit,recent_sales,insert_user,check_email,check_email_pass
 
@@ -8,6 +8,7 @@ total_profit,today_profit,recent_sales,insert_user,check_email,check_email_pass
 # create a flask instance
 
 app=Flask(__name__)
+app.secret_key = 'linet'
 
 # create first route
 
@@ -17,8 +18,12 @@ def home():
 
 @app.route("/products")
 def products():
-    prods=get_data("products")
-    return render_template("products.html",prods=prods)
+    if 'email' in session:
+       prods=get_data("products")
+       return render_template("products.html",prods=prods)
+    else:
+        flash('login to view page')
+        return redirect(url_for('login'))
 
 @app.route("/sales")
 def sales():
@@ -95,16 +100,21 @@ def login():
     if request.method == "POST":
         email=request.form['email']
         password=request.form['password']
+        # check email
         c_email=check_email(email)
-        if len(c_email) == 0:
-            flash('register or use a different email')
-        else:
-            email_password=check_email_pass(email,password)   
-            if len(email_password) == 0:
+
+        if len(c_email) == 1:
+            email_password=check_email_pass(email,password) 
+           
+            if len(email_password) == 1:
+                session['email']=email
                 flash('login successfully')
                 return redirect(url_for('dashboard'))
             else:
                 flash('wrong email or password Try again')
+        else:
+            flash("email does not exist register")  
+            return redirect(url_for('register'))      
     
     return render_template("login.html")
 @app.route("/register",methods=["POST","GET"])
@@ -114,12 +124,12 @@ def register():
         f_name=request.form['full_name']
         email=request.form['email']
         password=request.form['password']
+        new_user=(f_name,email,password)
         r_email=check_email(email)
         if len(r_email)==0:
 
-            new_user=(f_name,email,password)
             insert_user(new_user) 
-            
+            flash("registration successfully")
             return redirect(url_for('login'))  
         else:
             flash('email already exist')    
@@ -152,7 +162,13 @@ def make_sales():
         # insert sales
         new_sales = (pid,quantity)
         insert_sales(new_sales)
-    return redirect(url_for("sales"))   
+    return redirect(url_for("sales")) 
+
+@app.route('/logout')  
+def logout():
+    session.pop('email',None)
+    flash('logout successful')
+    return redirect(url_for('login'))
 
  
 # create a dashboard route
