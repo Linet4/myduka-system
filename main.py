@@ -82,7 +82,7 @@ def dashboard():
         t_profit=total_profit()
         # print(t_profit)
         for i in t_profit:
-            Totalprofit=i[0]
+            Totalprofit=round(i[0],3)
         #Today profit
         today_p=today_profit()
         for i in today_p:
@@ -111,12 +111,12 @@ def login():
            
             if len(email_password) == 1:
                 session['email']=email
-                flash('login successfully')
+                flash('login successfully','success')
                 return redirect(url_for('dashboard'))
             else:
-                flash('wrong email or password Try again')
+                flash('wrong email or password Try again','error')
         else:
-            flash("email does not exist register")  
+            flash("email does not exist register",'error')  
             return redirect(url_for('register'))      
     
     return render_template("login.html")
@@ -153,6 +153,7 @@ def add_products():
         # insert products
         new_prod = (pname,bprice,sprice,squantity)
         insert_products(new_prod)
+        flash('Added successfully','success')
     return redirect(url_for("products"))
 
 @app.route("/make_sales",methods=["POST","GET"])
@@ -165,6 +166,7 @@ def make_sales():
         # insert sales
         new_sales = (pid,quantity)
         insert_sales(new_sales)
+        flash('Sales added successfully','success')
     return redirect(url_for("sales")) 
 
 @app.route('/logout')  

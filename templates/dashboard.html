@@ -131,7 +131,7 @@
       top: 60px;
       width: calc(100%-60px);
       left: 260px;
-      min-height: calc(100%-60px);
+      min-height: 100%;
       background: #f5f5f5;
       right: 0;
 
@@ -222,6 +222,7 @@
     }
 
     .card_two {
+      position: relative;
       height: 400px;
       width: 100%;
       padding: 35px 20px;
@@ -230,18 +231,28 @@
     }
 
     .card_two .recent {
+      position: relative;
       border-radius: 10px;
-      justify-content: center;
       align-items: center;
       padding: 20px;
-      display: flex;
       background: #fff;
       border-radius: 9px;
       box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
-      min-height: 400px;
+      min-height: 100px;
 
 
     }
+
+    .card_two .recent .card-content .search2 {
+      position: relative;
+      width: 60%;
+      justify-self: center;
+      top: 5px;
+      right:0;
+      left:500px
+      
+    }
+
 
     /* Responsive starts here */
     @media(max-width:1115px) {
@@ -262,8 +273,10 @@
 
       .charts {
         grid-template-columns: 1fr;
-        padding: 25px;
+        padding: 20px;
       }
+
+      
     }
 
     @media(max-width:500px) {
@@ -286,6 +299,13 @@
       .search input {
         padding: 0 20px;
       }
+      .search2{
+        width: 50%;
+      }
+      .search2 input {
+        padding: 0 50px;
+        right: 0;
+      }
 
       .fa-bell {
         margin-right: 5px;
@@ -299,8 +319,10 @@
   </style>
 </head>
 
-<body>
-  
+
+  {% extends 'base.html'%}
+  {% block title%} dashboard {%endblock%}
+  {% block content%}
 
   <div class="container">
     <div class="topbar">
@@ -407,7 +429,7 @@
 
       </div>
       <div class="card">
-        <div class="card-contant">
+        <div class="card-content">
           <div class="name">Total Sales</div>
           <div class="number">${{sales_t}}</div>
 
@@ -419,7 +441,7 @@
 
       </div>
       <div class="card">
-        <div class="card-contant">
+        <div class="card-content">
           <div class="name">Today Profit</div>
           <div class="number">${{todayprofit}}</div>
 
@@ -431,7 +453,7 @@
 
       </div>
       <div class="card">
-        <div class="card-contant">
+        <div class="card-content">
           <div class="name">Total Profit</div>
           <div class="number">${{Totalprofit}}</div>
 
@@ -457,16 +479,23 @@
     </div>
     <div class="card_two">
       <div class="recent">
-        <div class="card-contant">
+        <div class="card-content">
           <h4>Resent Sales</h4>
-          <table class="table">
+          <div class="search2">
+            <input type="text" id="search" placeholder="Search..">
+            <label for="search"><i class="fas fa-search"></i></label>
+          </div><br>
+          
+
+          <table class="table table-hover table-striped">
+            
             <thead>
               <tr>
                 <th scope="col">Salesid</th>
                 <th scope="col">productid</th>
                 <th scope="col">quantity</th>
                 <th scope="col">created_at</th>
-                
+
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -495,7 +524,7 @@
               </tr>
               {%endfor%}
 
-              
+             
 
             </tbody>
           </table>
@@ -583,6 +612,7 @@
     }
 });
   </script>
+   {%endblock%}
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"

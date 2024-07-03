@@ -1,116 +1,320 @@
 /* topbar starts here */
 .container {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
+
+.topbar {
+  position: fixed;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+  width: 100%;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 2fr 10fr 0.4fr 1fr;
+  align-items: center;
+  z-index: 1;
+
+
+}
+
+.logo h2 {
+  color: #0ede7a;
+
+}
+
+.search {
+  position: relative;
+  width: 60%;
+  justify-self: center;
+  top: 5px
+}
+
+.search input {
+  width: 100%;
+  height: 40px;
+  padding: 0 40px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background: #f5f5f5;
+  top: 5px;
+
+}
+
+.search i {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+
+
+}
+
+.user {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* sidebar starts here */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  width: 260px;
+  height: 600px;
+  background: #0ede7a;
+  overflow-x: hidden;
+}
+
+.sidebar ul {
+  margin-top: 20px;
+
+}
+
+.sidebar ul li {
+  width: 100%;
+  list-style: none;
+}
+
+.sidebar ul li:hover {
+  background: #fff;
+
+}
+
+.sidebar ul li:hover a {
+  color: #0ede7a;
+}
+
+.sidebar ul li a {
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.sidebar ul li a i {
+  min-width: 60px;
+  font-size: 24px;
+  text-align: center;
+
+}
+
+.main {
+  position: absolute;
+  top: 60px;
+  width: calc(100%-60px);
+  left: 260px;
+  min-height: calc(100%-60px);
+  background: #f5f5f5;
+  right: 10px;
+  padding: 30px;
+}
+
+/* sidebar ends here */
+
+.error {
+  color: red
+}
+
+.success {
+  color: green;
+  background: #0c1f15;
+ 
+  left:600px;
+}
+.card_message{
+  width: 40%;
+  left:600px;
+  right:0;
+}
+.cards {
+  width: 100%;
+  padding: 35px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.cards .card {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 9px;
+  justify-content: space-between;
+  box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+
+}
+
+.cards .card:hover {
+  background: #0ede7a;
+}
+
+.cards .card:hover .name {
+  color: #fff;
+}
+
+.cards .card:hover .number {
+  color: #fff;
+}
+
+.cards .card:hover .icon-box {
+  color: #fff;
+}
+
+.number {
+  font-size: 20px;
+  font-weight: 100;
+  color: #0ede7a;
+
+
+}
+
+.name {
+  color: #888;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.icon-box {
+  font-size: 40px;
+  color: #0ede7a;
+
+}
+
+/* charts starts here */
+.charts {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  grid-gap: 20px;
+  width: 100%;
+  padding: 10px;
+  padding-top: 0;
+
+}
+
+.chart {
+  background: #fff;
+  /* padding: 20px; */
+  border-radius: 10px;
+  box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+  min-height: 300px;
+
+}
+
+.chart h2 {
+  margin-bottom: 6px;
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+}
+
+.card_two {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  padding: 35px 20px;
+  grid-template-columns: 1fr;
+
+}
+
+.card_two .recent {
+  position: relative;
+  border-radius: 10px;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.08);
+  min-height: 100px;
+
+
+}
+
+.card_two .recent .card-content .search2 {
+  position: relative;
+  width: 60%;
+  justify-self: center;
+  top: 5px;
+  right:0;
+  left:500px
+  
+}
+
+
+/* Responsive starts here */
+@media(max-width:1115px) {
+  .sidebar {
+    width: 60px;
   }
 
+  .main {
+    left: 60px;
+    width: calc(100%-60px);
+  }
+}
+
+@media(max-width:1000px) {
+  .cards {
+    grid-template-columns: repeat(2 1fr);
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  
+}
+
+@media(max-width:500px) {
   .topbar {
-    position: fixed;
-    background-color: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
-    width: 100%;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: 2fr 10fr 0.4fr 1fr;
-    align-items: center;
-    z-index: 1;
+    grid-template-columns: 1fr 5fr 0.3fr 1fr;
+  }
 
-
+  .cards {
+    grid-template-columns: 1fr;
   }
 
   .logo h2 {
-    color: #0ede7a;
-
+    font-size: 20px;
   }
 
   .search {
-    position: relative;
-    width: 60%;
-    justify-self: center;
-    top: 5px
+    width: 80%;
   }
 
   .search input {
-    width: 100%;
-    height: 40px;
-    padding: 0 40px;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    background: #f5f5f5;
-    top: 5px;
-
+    padding: 0 20px;
+  }
+  .search2{
+    width: 50%;
+  }
+  .search2 input {
+    padding: 0 50px;
+    right: 0;
   }
 
-  .search i {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    cursor: pointer;
-
-
+  .fa-bell {
+    margin-right: 5px;
   }
 
   .user {
-    position: relative;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
-
-  .user img {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
-
-      /* sidebar starts here */
-      .sidebar {
-          position: fixed;
-          top: 60px;
-          width: 260px;
-          height: 600px;
-          background: #0ede7a;
-          overflow-x: hidden;
-      }
-
-      .sidebar ul {
-          margin-top: 20px;
-
-      }
-
-      .sidebar ul li {
-          width: 100%;
-          list-style: none;
-      }
-
-      .sidebar ul li:hover {
-          background: #fff;
-
-      }
-
-      .sidebar ul li:hover a {
-          color: #0ede7a;
-      }
-
-      .sidebar ul li a {
-          width: 100%;
-          text-decoration: none;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          height: 60px;
-      }
-
-      .sidebar ul li a i {
-          min-width: 60px;
-          font-size: 24px;
-          text-align: center;
-
-      }
-
-      /* sidebar ends here */
+}
